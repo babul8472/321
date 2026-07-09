@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: video-generator-bot
+    env: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: NVIDIA_API_KEY
+        sync: false
+      - key: PEXELS_API_KEY
+        sync: false
