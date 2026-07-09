@@ -294,7 +294,7 @@ def remove_silence_ffmpeg(in_path: str, out_path: str):
         shutil.copy(in_path, out_path)
 
 
-def get_duration(path: str) -> float:
+def get_audio_duration(path: str) -> float:
     cmd = [
         "ffprobe", "-v", "error",
         "-show_entries", "format=duration",
@@ -310,7 +310,7 @@ def get_duration(path: str) -> float:
 # ==============================================================================
 
 def build_scene_clip(visual: dict, audio_path: str, out_path: str):
-    duration = get_duration(audio_path)
+    duration = get_audio_duration(audio_path)
     vf = (
         f"scale={VIDEO_WIDTH}:{VIDEO_HEIGHT}:force_original_aspect_ratio=increase,"
         f"crop={VIDEO_WIDTH}:{VIDEO_HEIGHT},setsar=1"
